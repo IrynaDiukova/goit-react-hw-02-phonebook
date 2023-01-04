@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ContactList = ({ contacts, deleteContact }) => {
+const ContactList = ({ contacts, onDeleteContact }) => {
     return (
       <ul>
         {contacts.map(({id, name, number}) => (
@@ -9,20 +9,23 @@ const ContactList = ({ contacts, deleteContact }) => {
             key={id}
             id={id}
             name={name} 
-            number={number}
-            del={deleteContact} />))}
+            number={number}>
+                <span> {name} </span>
+                <span> {number} </span>
+                <button type="button" onClick={() => onDeleteContact(id)}> Delete </button>
+            </li>))}
        </ul>
     )
     
 };
 
 ContactList.propTypes = {
-    contacts:PropTypes.arrayOf(PropTypes.exact({
+    contacts:PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-        del: PropTypes.func.isRequired,
-    })),
+        name: PropTypes.string,
+        number: PropTypes.string,   
+    })).isRequired,
+    onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactList;

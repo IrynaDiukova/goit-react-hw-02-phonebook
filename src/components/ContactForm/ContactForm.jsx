@@ -7,6 +7,10 @@ class ContactForm extends Component {
         number: ''
     };
 
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired,
+    }
+
     handleChange = event => {
         const {name, value} = event.currentTarget;
         this.setState({ [name]: value });
@@ -28,7 +32,8 @@ class ContactForm extends Component {
         return (
             <form onSubmit={this.hendleSubmit}>
                 <label>
-                    Name <input
+                    Name 
+                    <input
                     type="text"
                     name="name"
                     value={name}
@@ -39,7 +44,8 @@ class ContactForm extends Component {
                 />
                 </label>
                 <label>
-                    Number <input
+                    Number 
+                    <input
                     type="tel"
                     name="number"
                     value={number}
@@ -55,8 +61,5 @@ class ContactForm extends Component {
     }
 };
 
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
 
 export default ContactForm;
