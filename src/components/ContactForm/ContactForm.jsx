@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+
+import css from './ContactForm.module.css'; 
 
 class ContactForm extends Component {
     static propTypes = {
@@ -32,7 +34,7 @@ class ContactForm extends Component {
         const { name, number } = this.state;
 
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className={css.form} onSubmit={this.handleSubmit}>
                 <label>
                     Name 
                     <input
@@ -57,7 +59,7 @@ class ContactForm extends Component {
                     required
                     />
                 </label>
-                <button type="submit">Add contact</button>       
+                <button className={css.btn} type="submit">Add contact</button>       
             </form>
         )
     }

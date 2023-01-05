@@ -5,6 +5,8 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 
+import css from './App.module.css';
+
 export class App extends Component {
   state = {
     contacts: [],
@@ -64,11 +66,11 @@ export class App extends Component {
       const visibleContacts = this.getVisibleContacts();
       
       return (
-        <div>
-        <h1>Phonebook</h1>
+        <div className={css.phoneContainer}>
+        <h1 className={css.phoneTitle}>Phonebook</h1>
         <ContactForm onSubmit={this.addContact}/>
 
-        <h2>Contacts</h2>
+        <h2 className={css.phoneTitle}>Contacts</h2>
         <Filter onChange={this.changeFilter} value={filter} /> 
         <ContactList contacts={visibleContacts} onDeleteContact={this.deleteContact} />
         </div>
