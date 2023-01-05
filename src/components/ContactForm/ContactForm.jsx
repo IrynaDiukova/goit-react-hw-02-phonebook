@@ -2,35 +2,37 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 
 class ContactForm extends Component {
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired,
+    };
+
     state = {
         name: '',
         number: ''
     };
 
-    static propTypes = {
-        onSubmit: PropTypes.func.isRequired,
-    }
-
-    handleChange = event => {
-        const {name, value} = event.currentTarget;
+    
+    handleChange = e => {
+        const { name, value } = e.currentTarget;
         this.setState({ [name]: value });
     };
 
-    hendleSubmit = event => {
-        event.preventDefault();
-        this.props.onSubmit(this.state);
+     handleSubmit = e => {
+        e.preventDefault();
+        const { name, number } = this.state;
+        this.props.onSubmit(name, number);
         this.reset();
-  };
+    };
 
     reset = () => {
         this.setState({ name: '', number: '' })
-    }
+    };
 
     render() {
         const { name, number } = this.state;
 
         return (
-            <form onSubmit={this.hendleSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 <label>
                     Name 
                     <input
