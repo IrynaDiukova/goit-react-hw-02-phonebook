@@ -13,6 +13,13 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidMount(){
+    if(LsService.load('phonebook')) {
+      const LSData = LsService.load('phonebook');
+      this.setState({ contacts: LSData});
+    }
+  }
+
   
   formSubmit = data => {
     console.log(data);
