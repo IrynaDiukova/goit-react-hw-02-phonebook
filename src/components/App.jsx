@@ -13,9 +13,8 @@ export class App extends Component {
     filter: '',
   };
 
-  
   formSubmit = data => {
-    console.log(data);
+  console.log(data);
   };
 
   handleChange = e => {
